@@ -8,6 +8,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 script_dir = Path(__file__).parent.absolute()
@@ -15,7 +16,6 @@ project_root = script_dir.parent
 
 RAW_PATH = project_root / "data/raw/car_accidents.xlsx"
 PROCESSED_PATH = project_root / "data/processed/accidents_clean.parquet"
-
 
 # ---- helpers ----------------------------------------------------------------
 _COST_RE = re.compile(r"(\d[\d,]*)-(\d[\d,]*)")
@@ -45,7 +45,6 @@ def _combine_date_and_time(date_ser: pd.Series, time_ser: pd.Series) -> pd.Serie
     return date_ser + delta
 
 
-
 # ---- public API -------------------------------------------------------------
 
 
@@ -68,12 +67,27 @@ def clean_data(df_raw: pd.DataFrame) -> pd.DataFrame:
     df["month"] = df["timestamp"].dt.month
     df["year"] = df["timestamp"].dt.year
 
+    # --- filter years -------------------------------------------------------
+    df = df[df["year"].isin([2018, 2019, 2020])]
+
     # --- locations -----------------------------------------------------------
     df["region"] = df["region"].str.strip().str.title()
+
+    # --- car years -----------------------------------------------------------
+    df = df[(df.car_year >= 1980) & (df.car_year <= pd.Timestamp.now().year)]
 
     # --- costs ---------------------------------------------------------------
     df["cost_range"] = df["cost"]
     df["cost_midpoint"] = df["cost_range"].apply(_cost_midpoint)
+
+    # --- normalize genders ----------------------------------------------------
+    df["gender"] = (
+        df["gender"]
+        .str.strip()
+        .str.lower()
+        .map({"male": "M", "female": "F"})
+    )
+    df = df[df["gender"].isin(["M", "F"])]
 
     # --- rename & reorder ----------------------------------------------------
     desired = [

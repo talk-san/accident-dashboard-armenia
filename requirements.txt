@@ -1,6 +1,10 @@
-pandas
+pandas~=2.2.3
 numpy
-plotly
-streamlit
+plotly~=6.0.1
+streamlit~=1.44.1
 pyarrow
 openpyxl
+
+requests~=2.32.3
+openmeteo_requests~=1.4.0
+requests-cache~=1.2.1
