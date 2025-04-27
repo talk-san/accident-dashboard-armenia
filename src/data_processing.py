@@ -8,7 +8,6 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 
 script_dir = Path(__file__).parent.absolute()
@@ -112,11 +111,10 @@ def clean_data(df_raw: pd.DataFrame) -> pd.DataFrame:
 
 
 def write_clean(df: pd.DataFrame, out: str | Path = PROCESSED_PATH) -> None:
-    """Write cleaned DataFrame to parquet with error handling."""
+    """Write cleaned DataFrame to parquet."""
     try:
         out = Path(out)
         out.parent.mkdir(parents=True, exist_ok=True)
-        print(f"Writing to {out}")
         df.to_parquet(out, index=False)
         if out.exists():
             print(f"Successfully wrote {out.name}")
@@ -128,5 +126,5 @@ def write_clean(df: pd.DataFrame, out: str | Path = PROCESSED_PATH) -> None:
 
 
 def load_processed(path: str | Path = PROCESSED_PATH) -> pd.DataFrame:
-    """Load the pre-cleaned parquet produced by `write_clean`."""
+    """Load the pre-cleaned parquet."""
     return pd.read_parquet(path)
