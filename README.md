@@ -28,6 +28,23 @@ DataVizProject/
 └── README.md
 ```
 
+## Technologies Used
+
+- **Python 3.12** – core programming language
+- **pandas** – data cleaning and analysis
+- **numpy** – numerical operations
+- **openpyxl** – reading Excel files
+- **pyarrow** – saving/loading Parquet files
+- **plotly** – interactive visualizations
+  - `plotly.express` – high-level plotting API
+  - `plotly.graph_objects` – low-level plot customization
+- **streamlit** – interactive dashboard web app
+- **open-meteo stack** – historical weather data
+  - `open-meteo-requests` – API client
+  - `requests-cache` – response caching
+  - `retry-requests` – automatic retries
+- **Jupyter Lab** – exploratory analysis notebooks
+
 ---
 
 ## Getting Started
