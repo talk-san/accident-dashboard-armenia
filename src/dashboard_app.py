@@ -56,7 +56,6 @@ def main() -> None:
     region_sel = st.sidebar.multiselect(
         "Region",
         regions,
-        default=st.session_state.region_sel,
         key="region_sel",
     )
 
@@ -73,7 +72,6 @@ def main() -> None:
     brand_sel = st.sidebar.multiselect(
         "Car Brand (top 20)",
         brands,
-        default=st.session_state.brand_sel,
         key="brand_sel",
     )
 
@@ -87,7 +85,6 @@ def main() -> None:
     gender_sel = st.sidebar.multiselect(
         "Gender",
         genders,
-        default=st.session_state.gender_sel,
         key="gender_sel",
     )
 
