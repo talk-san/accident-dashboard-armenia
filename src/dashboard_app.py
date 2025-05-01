@@ -121,8 +121,8 @@ def main() -> None:
     st.plotly_chart(cost_distribution(dff),   use_container_width=True)
 
     st.caption(
-        "Data source: Armenian accident registry (2020 update). "
-        "Costs mapped to band mid-points."
+        "Tariel Hakobyan & Norayr Sukiasyan\n "
+        "AUA - Data Visualizations - Spring 2025."
     )
 
 if __name__ == "__main__":
