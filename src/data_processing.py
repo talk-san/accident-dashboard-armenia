@@ -73,7 +73,7 @@ def clean_data(df_raw: pd.DataFrame) -> pd.DataFrame:
     df["region"] = df["region"].str.strip().str.title()
 
     # --- car years -----------------------------------------------------------
-    df = df[(df.car_year >= 1980) & (df.car_year <= pd.Timestamp.now().year)]
+    df = df[(df.car_year >= 1960) & (df.car_year <= pd.Timestamp.now().year)]
 
     # --- costs ---------------------------------------------------------------
     df["cost_range"] = df["cost"]
