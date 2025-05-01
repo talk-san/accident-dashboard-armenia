@@ -19,10 +19,10 @@ DataVizProject/
 │   ├── 04_weather_analysis.ipynb
 │   └── 05_vehicle_cost_analysis.ipynb
 ├── reports/
-│   └── figures/     # Exported static charts
+│   └── figures/     # Exported interactive charts
 ├── src/             # Streamlit interactive dashboard
 │   ├── data_processing.py   # Load & clean pipeline
-│   ├── visualization.py     # Plotly chart functions
+│   ├── visualization.py     # Plotly chart functions used for Streamlit
 │   └── dashboard_app.py     # Streamlit app entry point
 ├── requirements.txt
 └── README.md
